@@ -30,11 +30,11 @@ $cvv = $separa[3];
 
 
   
-$number1 = substr($ccn,0,4);
-$number2 = substr($ccn,4,4);
-$number3 = substr($ccn,8,4);
-$number4 = substr($ccn,12,4);
-$number6 = substr($ccn,0,6);
+$number1 = substr($cc,0,4);
+$number2 = substr($cc,4,4);
+$number3 = substr($cc,8,4);
+$number4 = substr($cc,12,4);
+$number6 = substr($cc,0,6);
 
 function value($str,$find_start,$find_end)
 {
@@ -115,7 +115,7 @@ if($state=="Alabama"){ $state="AL";
 }else if($state=="new hampshire"){ $state="NH";
 }else if($state=="new jersey"){ $state="NJ";
 }else if($state=="new mexico"){ $state="NM";
-}else if($state=="new york"){ $state="LA";
+}else if($state=="new york"){ $state="NY";
 }else if($state=="north carolina"){ $state="NC";
 }else if($state=="north dakota"){ $state="ND";
 }else if($state=="Ohio"){ $state="OH";
@@ -170,7 +170,7 @@ switch ($ano) {
 
 
 function saveCVV($cc) {
-    $file = dirname(FILE) . "/cvv.txt";
+    $file = dirname(__FILE__) . "/cvv.txt";
     $fp = fopen($file, "a+");
     fwrite($fp, $cc . PHP_EOL);
     fclose($fp);
@@ -178,7 +178,7 @@ function saveCVV($cc) {
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, 'https://m.stripe.com/6');
-curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST"); 
 curl_setopt($ch, CURLOPT_HEADER, 1);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -213,7 +213,7 @@ $ccs = trim(strip_tags(getstr($cookies,'m=',';Expires')));
 $ch = curl_init();
 
 curl_setopt($ch, CURLOPT_URL, 'https://m.stripe.com/6');
-curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST"); 
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
