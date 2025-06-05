@@ -23,15 +23,31 @@
 <link rel="stylesheet" href="css/chartist.css" type="text/css" media="all">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/widget.css">
+<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
 </head>
 <body>
     <style type="text/css">
+:root {
+  --md-sys-color-primary: #6750A4;
+  --md-sys-color-on-primary: #FFFFFF;
+  --md-sys-color-secondary: #625B71;
+  --md-sys-color-background: #FFFFFF;
+  --md-sys-color-surface: #FFFFFF;
+}
              body {
-    background: #292C35;
+    background: var(--md-sys-color-background);
     transition: background 0.2s linear;
 }   
         body.dark {
     background: #292C35;
+}
+.mdc-button--raised {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+.mdc-button--outlined {
+  border-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-primary);
 }
 
 .checkbox {
@@ -275,8 +291,13 @@
 <div class="card-block">
 <textarea id="lista" class="form-control" rows="16" cols="5"></textarea>
 <br />
-<center><button class="btn waves-effect waves-light btn-grd-success btn-block" id="testar" onclick="if (!window.__cfRLUnblockHandlers) return false; enviar()" data-cf-modified-1f5a4002f24b6979f3d96e8f-="">Start</button>
-<button class="btn waves-effect waves-light btn-grd-danger btn-block">Stop</button>
+<center>
+  <button class="mdc-button mdc-button--raised" id="testar" onclick="if (!window.__cfRLUnblockHandlers) return false; enviar()">
+    <span class="mdc-button__label">Start</span>
+  </button>
+  <button class="mdc-button mdc-button--outlined" id="stop">
+    <span class="mdc-button__label">Stop</span>
+  </button>
 </center>
 </div>
 </div>
@@ -445,6 +466,11 @@ chk.addEventListener('change', () => {
 <script src="js/vertical-layout.min.js" type="1f5a4002f24b6979f3d96e8f-text/javascript"></script>
 <script type="1f5a4002f24b6979f3d96e8f-text/javascript" src="js/custom-dashboard.min.js"></script>
 <script type="1f5a4002f24b6979f3d96e8f-text/javascript" src="js/script.min.js"></script>
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<script>
+  mdc.ripple.MDCRipple.attachTo(document.querySelector("#testar"));
+  mdc.ripple.MDCRipple.attachTo(document.querySelector("#stop"));
+</script>
 <script type="1f5a4002f24b6979f3d96e8f-text/javascript" charset="utf-8">
 </script><script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="1f5a4002f24b6979f3d96e8f-|49" defer=""></script></body>
 </html>
